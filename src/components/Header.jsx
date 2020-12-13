@@ -9,7 +9,7 @@ const Header = ({ length }) => {
             py="3rem"
             mb="1.2rem"
             bg="#f9fafb"
-            border="1px solid #d2d6dc"
+            borderBottom="1px solid #d2d6dc"
         >
             <Heading fontSize="3rem" fontWeight="400" lineHeight="5rem">
                 Person Manager

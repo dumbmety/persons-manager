@@ -7,6 +7,7 @@ import {
     ChakraProvider,
     Container,
 } from '@chakra-ui/react'
+import Swal from 'sweetalert2'
 
 import AddPerson from '../components/AddPerson'
 import Header from '../components/Header'
@@ -44,7 +45,11 @@ class App extends Component {
     handleAddPerson = event => {
         event.preventDefault()
         if (this.state.person.trim().length === 0) {
-            return alert('Please enter a person name')
+            return Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: 'Please enter a person name.'
+            })
         }
 
         const persons = [...this.state.persons]
@@ -60,6 +65,10 @@ class App extends Component {
 
     render() {
         const { persons, person, showPersons } = this.state
+
+        window.onload = () => {
+            document.querySelector('#add-person').focus()
+        }
 
         return (
             <ChakraProvider>
