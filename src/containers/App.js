@@ -26,8 +26,22 @@ class App extends Component {
 
     handleDeletePerson = id => {
         const persons = [...this.state.persons]
+
+        const personName = persons.filter(p => p.id === id)[0].fullName
         const filteredPersons = persons.filter(p => p.id !== id)
-        this.setState({ persons: filteredPersons })
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Delete Person',
+            text: `Are you sure you want to delete "${personName}"?`,
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            confirmButtonColor: '#e41b1b'
+        }).then(result => {
+            if (result.isConfirmed) {
+                this.setState({ persons: filteredPersons })
+            }
+        })
     }
 
     handleNameChange = (event, id) => {
