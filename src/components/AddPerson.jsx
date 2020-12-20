@@ -8,6 +8,7 @@ const AddPerson = ({ addPerson, setPerson, personName }) => {
     <form onSubmit={addPerson}>
       <InputGroup size="lg" mt="1.2rem">
         <Input
+          id="add-person"
           onChange={setPerson}
           placeholder="Add new person ..."
           value={personName}
