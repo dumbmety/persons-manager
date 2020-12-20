@@ -42,11 +42,7 @@ class App extends Component {
 			showCancelButton: true,
 			confirmButtonText: 'Delete',
 			confirmButtonColor: '#e41b1b',
-		}).then(result => {
-			if (result.isConfirmed) {
-				this.setState({ persons: filteredPersons })
-			}
-		})
+		}).then(result => result.isConfirmed && this.setState({ persons: filteredPersons }))
 	}
 
 	handleNameChange = (event, id) => {
@@ -63,7 +59,7 @@ class App extends Component {
 
 	handleAddPerson = event => {
 		event.preventDefault()
-		if (this.state.person.trim().length === 0) {
+		if (this.state.person.trim() === '') {
 			return Swal.fire({
 				icon: 'warning',
 				title: 'Warning',
@@ -83,7 +79,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { persons, person, showPersons } = this.state
+		const { person, persons, showPersons } = this.state
 
 		window.onload = () => {
 			document.querySelector('#add-person').focus()
@@ -100,7 +96,7 @@ class App extends Component {
 			<SimpleBar style={{ maxHeight: '100vh', textAlign: 'center' }}>
 				<ChakraProvider>
 					<Header length={persons.length} />
-					<Container>
+					<Container as="main">
 						<Button
 							disabled={persons.length === 0}
 							colorScheme="blue"
@@ -127,7 +123,7 @@ class App extends Component {
 						{persons.length === 0 ? (
 							<Alert mt="1.2rem" rounded="md" status="warning">
 								<AlertIcon />
-								There is no name, you can add one above.
+                There is no name, you can add one above.
 							</Alert>
 						) : null}
 					</Container>

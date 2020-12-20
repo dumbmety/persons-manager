@@ -1,9 +1,9 @@
 /* Change Selected Text Color */
 ::selection {
-	background: #cfe8ff;
+  background: #cfe8ff;
 }
 
 /* Customize Scrollbar */
 .scrollbar-track {
-	background: none !important;
+  background: none !important;
 }

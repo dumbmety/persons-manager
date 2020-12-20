@@ -1,6 +1,5 @@
 {
-	"arrowParens": "avoid",
-	"semi": false,
-	"singleQuote": true,
-	"useTabs": true
+  "arrowParens": "avoid",
+  "semi": false,
+  "singleQuote": true
 }
