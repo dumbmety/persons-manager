@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react';
 
-import { Badge, Box, Heading, Text } from '@chakra-ui/react'
+import { Badge, Box, Heading, Text } from '@chakra-ui/react';
 
-const Header = ({ length }) => {
+import MyContext from '../context/MyContext';
+
+const Header = () => {
+  const { state } = useContext(MyContext);
+
   return (
     <Box
       as="header"
@@ -11,25 +15,21 @@ const Header = ({ length }) => {
       mb="1.2rem"
       py="3rem"
     >
-      <Heading
-        fontSize="3rem"
-        fontWeight="400"
-        lineHeight="5rem"
-      >
+      <Heading fontSize="3rem" fontWeight="400" lineHeight="5rem">
         Person Manager
       </Heading>
       <Text fontSize="1.2rem">
         The number of persons is:
         <Badge
-          colorScheme={length === 0 ? 'red' : 'teal'}
+          colorScheme={state.persons.length === 0 ? 'red' : 'teal'}
           fontSize="1rem"
           ml="0.5rem"
         >
-          {length}
+          {state.persons.length}
         </Badge>
       </Text>
     </Box>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
