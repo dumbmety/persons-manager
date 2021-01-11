@@ -24,6 +24,6 @@
 
 ## Contact US
 
-- Email: [mehdineysi@outlook.com](mailto:mehdineysi@outlook.com)
+- Email: [dev.mehdineysi@gmail.com](mailto:dev.mehdineysi@gmail.com)
 - Twitter: [@dev_mehdineysi](https://twitter.com/dev_mehdineysi)
 - Instagram: [@neysi.dev](https://instagram.com/neysi.dev)
