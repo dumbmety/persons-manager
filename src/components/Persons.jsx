@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
-import Person from './Person';
+import Person from './Person'
 
-import MyContext from '../context/MyContext';
+import MyContext from '../context/MyContext'
 
 const Persons = () => {
-  const { handleDeletePerson, handleNameChange, state } = useContext(MyContext);
+  const { handleDeletePerson, handleNameChange, state } = useContext(MyContext)
 
   return (
     <ul className="container">
@@ -20,7 +20,7 @@ const Persons = () => {
         ))
         .reverse()}
     </ul>
-  );
-};
+  )
+}
 
-export default Persons;
+export default Persons
