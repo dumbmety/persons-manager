@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 
 import { IconButton, Input, InputGroup } from '@chakra-ui/react'
 import { BiPlus } from 'react-icons/bi'
@@ -8,11 +8,15 @@ import MyContext from '../context/MyContext'
 const AddPerson = () => {
   const { handleAddPerson, setPerson, state } = useContext(MyContext)
 
+  const addPersonInput = useRef(null)
+  useEffect(() => addPersonInput.current.focus(), [])
+
   return (
     <form onSubmit={handleAddPerson}>
       <InputGroup size="lg" mt="1.2rem">
         <Input
           id="add-person"
+          ref={addPersonInput}
           onChange={setPerson}
           placeholder="Add new person ..."
           value={state.person}
