@@ -22,8 +22,8 @@
 - Modal: [SweetAlert2](https://sweetalert2.github.io)
 - MacOS Scrollbar: [SimplebarReact](https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-react), [SmoothScrollbar](https://idiotwu.github.io/smooth-scrollbar)
 
-## Contact US
+## Follow Me
 
-- Email: [dev.mehdineysi@gmail.com](mailto:dev.mehdineysi@gmail.com)
 - Twitter: [@neysidev](https://twitter.com/neysidev)
 - Instagram: [@neysidev](https://instagram.com/neysidev)
+- LinkedIn: [@neysimehdi](https://linkedin.com/in/neysimehdi)
