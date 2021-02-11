@@ -18,7 +18,7 @@
 
 ## Tools
 
-- Css Framework: [Chakra UI](https://chakra-ui.com)
+- UI Framework: [Chakra UI](https://chakra-ui.com)
 - Modal: [SweetAlert2](https://sweetalert2.github.io)
 - MacOS Scrollbar: [SimplebarReact](https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-react), [SmoothScrollbar](https://idiotwu.github.io/smooth-scrollbar)
 
