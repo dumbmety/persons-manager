@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box, Flex, IconButton, Input, Spacer } from '@chakra-ui/react';
-import { BiTrashAlt } from 'react-icons/bi';
+import { Box, Flex, IconButton, Text, Spacer } from '@chakra-ui/react';
+import { BiTrashAlt, BiEdit } from 'react-icons/bi';
 
 const Person = props => {
   return (
@@ -21,16 +21,16 @@ const Person = props => {
     >
       <Flex alignItems="center">
         <Box>
-          <Input
-            size="lg"
-            variant="unstyled"
-            value={props.fullName}
-            onChange={props.changed}
-            placeholder={props.fullName}
-          />
+          <Text>{props.fullName}</Text>
         </Box>
         <Spacer />
         <Box>
+          <IconButton
+            colorScheme="pink"
+            onClick={props.changed}
+            aria-label="Edit Person"
+            icon={<BiEdit size="1.2rem" />}
+          />
           <IconButton
             ml="8px"
             colorScheme="red"
