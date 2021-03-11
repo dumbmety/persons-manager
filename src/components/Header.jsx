@@ -9,11 +9,11 @@ const Header = () => {
 
   return (
     <Box
+      py="3rem"
+      mb="1.2rem"
       as="header"
       bg="#f9fafb"
       borderBottom="1px solid #d2d6dc"
-      mb="1.2rem"
-      py="3rem"
     >
       <Heading fontSize="3rem" fontWeight="400" lineHeight="5rem">
         Person Manager

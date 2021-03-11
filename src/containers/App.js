@@ -103,24 +103,21 @@ const App = () => {
           <Header />
           <Container as="main">
             <Button
-              disabled={persons.length === 0}
-              colorScheme="blue"
               size="md"
+              colorScheme="blue"
               onClick={handleShowPersons}
+              disabled={persons.length === 0}
             >
               {showPersons ? 'Hide Persons' : 'Show Persons'}
             </Button>
-
             <AddPerson />
-
-            {showPersons ? <Persons /> : null}
-
-            {persons.length === 0 ? (
+            {showPersons && <Persons />}
+            {persons.length === 0 && (
               <Alert mt="1.2rem" rounded="md" status="warning">
                 <AlertIcon />
                 There is no name, you can add one above.
               </Alert>
-            ) : null}
+            )}
           </Container>
         </ChakraProvider>
       </SimpleBar>
