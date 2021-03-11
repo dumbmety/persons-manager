@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
 const MyContext = createContext({
   handleAddPerson: () => {},
@@ -6,6 +6,6 @@ const MyContext = createContext({
   handleNameChange: () => {},
   setPerson: () => {},
   state: {}
-})
+});
 
-export default MyContext
+export default MyContext;

@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react';
 
-import { IconButton, Input, InputGroup } from '@chakra-ui/react'
-import { BiPlus } from 'react-icons/bi'
+import { IconButton, Input, InputGroup } from '@chakra-ui/react';
+import { BiPlus } from 'react-icons/bi';
 
-import MyContext from '../context/MyContext'
+import MyContext from '../context/MyContext';
 
 const AddPerson = () => {
-  const { handleAddPerson, setPerson, state } = useContext(MyContext)
+  const { handleAddPerson, setPerson, state } = useContext(MyContext);
 
-  const addPersonInput = useRef(null)
-  useEffect(() => addPersonInput.current.focus(), [])
+  const addPersonInput = useRef(null);
+  useEffect(() => addPersonInput.current.focus(), []);
 
   return (
     <form onSubmit={handleAddPerson}>
@@ -32,7 +32,7 @@ const AddPerson = () => {
         />
       </InputGroup>
     </form>
-  )
-}
+  );
+};
 
-export default AddPerson
+export default AddPerson;

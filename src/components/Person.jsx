@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { Box, Flex, IconButton, Input, Spacer } from '@chakra-ui/react'
-import { BiTrashAlt } from 'react-icons/bi'
+import { Box, Flex, IconButton, Input, Spacer } from '@chakra-ui/react';
+import { BiTrashAlt } from 'react-icons/bi';
 
 const Person = ({ fullName, deleted, changed }) => {
   return (
@@ -41,7 +41,7 @@ const Person = ({ fullName, deleted, changed }) => {
         </Box>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default Person
+export default Person;
