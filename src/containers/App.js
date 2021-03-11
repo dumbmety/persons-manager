@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import {
   Alert,
@@ -19,22 +19,20 @@ import AddPerson from '../components/AddPerson';
 import Header from '../components/Header';
 import Persons from '../components/Persons';
 
-class App extends Component {
-  state = {
-    persons: [],
-    person: '',
-    showPersons: true
+const App = () => {
+  const [persons, setPersons] = useState([]);
+  const [person, setPerson] = useState('');
+  const [showPersons, setShowPersons] = useState(true);
+
+  const handleShowPersons = () => {
+    setShowPersons(!showPersons);
   };
 
-  handleShowPersons = () => {
-    this.setState({ showPersons: !this.state.showPersons });
-  };
+  const handleDeletePerson = id => {
+    const allPersons = [...persons];
 
-  handleDeletePerson = id => {
-    const persons = [...this.state.persons];
-
-    const personName = persons.filter(p => p.id === id)[0].fullName;
-    const filteredPersons = persons.filter(p => p.id !== id);
+    const personName = allPersons.filter(p => p.id === id)[0].fullName;
+    const filteredPersons = allPersons.filter(p => p.id !== id);
 
     Swal.fire({
       icon: 'error',
@@ -43,27 +41,23 @@ class App extends Component {
       showCancelButton: true,
       confirmButtonText: 'Delete',
       confirmButtonColor: '#e41b1b'
-    }).then(
-      result =>
-        result.isConfirmed && this.setState({ persons: filteredPersons })
-    );
+    }).then(result => result.isConfirmed && setPersons(filteredPersons));
   };
 
-  handleNameChange = (event, id) => {
-    const { persons: allPersons } = this.state;
+  const handleNameChange = (event, id) => {
+    const allPersons = [...persons];
 
     const personIndex = allPersons.findIndex(p => p.id === id);
     const person = allPersons[personIndex];
     person.fullName = event.target.value;
+    allPersons[personIndex] = person;
 
-    const persons = [...this.state.persons];
-    persons[personIndex] = person;
-    this.setState({ persons });
+    setPersons(allPersons);
   };
 
-  handleAddPerson = event => {
+  const handleAddPerson = event => {
     event.preventDefault();
-    if (this.state.person.trim() === '') {
+    if (person.trim() === '') {
       return Swal.fire({
         icon: 'warning',
         title: 'Warning',
@@ -71,70 +65,67 @@ class App extends Component {
       });
     }
 
-    const persons = [...this.state.persons];
-    const person = { id: persons.length + 1, fullName: this.state.person };
+    const allPersons = [...persons];
+    const newPerson = { id: allPersons.length + 1, fullName: person };
 
-    persons.push(person);
-    this.setState({ persons, person: '' });
+    allPersons.push(newPerson);
+    setPersons(allPersons);
+    setPerson('');
   };
 
-  setPerson = event => {
-    this.setState({ person: event.target.value });
+  const setPersonName = event => {
+    setPerson(event.target.value);
   };
 
-  render() {
-    const { persons, showPersons } = this.state;
+  window.onload = () => {
+    Scrollbar.use(OverscrollPlugin);
+    Scrollbar.init(document.querySelector('div[data-simplebar="init"]'), {
+      plugins: {
+        overscroll: true
+      }
+    });
+  };
 
-    window.onload = () => {
-      document.querySelector('#add-person').focus();
+  return (
+    <MyContext.Provider
+      value={{
+        handleAddPerson,
+        handleDeletePerson,
+        handleNameChange,
+        setPerson: setPersonName,
+        persons,
+        person,
+        showPersons
+      }}
+    >
+      <SimpleBar style={{ maxHeight: '100vh', textAlign: 'center' }}>
+        <ChakraProvider>
+          <Header />
+          <Container as="main">
+            <Button
+              disabled={persons.length === 0}
+              colorScheme="blue"
+              size="md"
+              onClick={handleShowPersons}
+            >
+              {showPersons ? 'Hide Persons' : 'Show Persons'}
+            </Button>
 
-      Scrollbar.use(OverscrollPlugin);
-      Scrollbar.init(document.querySelector('div[data-simplebar="init"]'), {
-        plugins: {
-          overscroll: true
-        }
-      });
-    };
+            <AddPerson />
 
-    return (
-      <MyContext.Provider
-        value={{
-          handleAddPerson: this.handleAddPerson,
-          handleDeletePerson: this.handleDeletePerson,
-          handleNameChange: this.handleNameChange,
-          setPerson: this.setPerson,
-          state: this.state
-        }}
-      >
-        <SimpleBar style={{ maxHeight: '100vh', textAlign: 'center' }}>
-          <ChakraProvider>
-            <Header />
-            <Container as="main">
-              <Button
-                disabled={persons.length === 0}
-                colorScheme="blue"
-                size="md"
-                onClick={this.handleShowPersons}
-              >
-                {showPersons ? 'Hide Persons' : 'Show Persons'}
-              </Button>
+            {showPersons ? <Persons /> : null}
 
-              <AddPerson />
-
-              {showPersons ? <Persons /> : null}
-
-              {persons.length === 0 ? (
-                <Alert mt="1.2rem" rounded="md" status="warning">
-                  <AlertIcon />
-                  There is no name, you can add one above.
-                </Alert>
-              ) : null}
-            </Container>
-          </ChakraProvider>
-        </SimpleBar>
-      </MyContext.Provider>
-    );
-  }
-}
+            {persons.length === 0 ? (
+              <Alert mt="1.2rem" rounded="md" status="warning">
+                <AlertIcon />
+                There is no name, you can add one above.
+              </Alert>
+            ) : null}
+          </Container>
+        </ChakraProvider>
+      </SimpleBar>
+    </MyContext.Provider>
+  );
+};
 
 export default App;

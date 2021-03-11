@@ -5,7 +5,7 @@ import { Badge, Box, Heading, Text } from '@chakra-ui/react';
 import MyContext from '../context/MyContext';
 
 const Header = () => {
-  const { state } = useContext(MyContext);
+  const { persons } = useContext(MyContext);
 
   return (
     <Box
@@ -21,11 +21,11 @@ const Header = () => {
       <Text fontSize="1.2rem">
         The number of persons is:
         <Badge
-          colorScheme={state.persons.length === 0 ? 'red' : 'teal'}
+          colorScheme={persons.length === 0 ? 'red' : 'teal'}
           fontSize="1rem"
           ml="0.5rem"
         >
-          {state.persons.length}
+          {persons.length}
         </Badge>
       </Text>
     </Box>

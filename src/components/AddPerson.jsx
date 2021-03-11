@@ -6,7 +6,7 @@ import { BiPlus } from 'react-icons/bi';
 import MyContext from '../context/MyContext';
 
 const AddPerson = () => {
-  const { handleAddPerson, setPerson, state } = useContext(MyContext);
+  const { handleAddPerson, setPerson, person } = useContext(MyContext);
 
   const addPersonInput = useRef(null);
   useEffect(() => addPersonInput.current.focus(), []);
@@ -19,7 +19,7 @@ const AddPerson = () => {
           ref={addPersonInput}
           onChange={setPerson}
           placeholder="Add new person ..."
-          value={state.person}
+          value={person}
           variant="outline"
         />
         <IconButton

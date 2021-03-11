@@ -5,7 +5,9 @@ const MyContext = createContext({
   handleDeletePerson: () => {},
   handleNameChange: () => {},
   setPerson: () => {},
-  state: {}
+  persons: [],
+  person: '',
+  showPersons: true
 });
 
 export default MyContext;

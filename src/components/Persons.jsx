@@ -5,11 +5,13 @@ import Person from './Person';
 import MyContext from '../context/MyContext';
 
 const Persons = () => {
-  const { handleDeletePerson, handleNameChange, state } = useContext(MyContext);
+  const { handleDeletePerson, handleNameChange, persons } = useContext(
+    MyContext
+  );
 
   return (
     <ul className="container">
-      {state.persons
+      {persons
         .map(person => (
           <Person
             changed={event => handleNameChange(event, person.id)}
