@@ -44,15 +44,26 @@ const App = () => {
     }).then(result => result.isConfirmed && setPersons(filteredPersons));
   };
 
-  const handleNameChange = (event, id) => {
+  const handleEditPerson = (event, id) => {
     const allPersons = [...persons];
 
     const personIndex = allPersons.findIndex(p => p.id === id);
-    const person = allPersons[personIndex];
-    person.fullName = event.target.value;
-    allPersons[personIndex] = person;
+    const targetPerson = allPersons[personIndex];
 
-    setPersons(allPersons);
+    Swal.fire({
+      title: 'Edit Person',
+      input: 'text',
+      inputValue: targetPerson.fullName,
+      showCancelButton: true,
+      confirmButtonText: 'Edit',
+      confirmButtonColor: '#2f855a',
+      cancelButtonColor: '#718096'
+    }).then(result => {
+      if (result.isConfirmed) {
+        targetPerson.fullName = result.value;
+        setPersons(allPersons);
+      }
+    });
   };
 
   const handleAddPerson = event => {
@@ -91,7 +102,7 @@ const App = () => {
       value={{
         handleAddPerson,
         handleDeletePerson,
-        handleNameChange,
+        handleEditPerson,
         setPerson: setPersonName,
         persons,
         person,

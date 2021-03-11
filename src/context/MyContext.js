@@ -3,7 +3,7 @@ import { createContext } from 'react';
 const MyContext = createContext({
   handleAddPerson: () => {},
   handleDeletePerson: () => {},
-  handleNameChange: () => {},
+  handleEditPerson: () => {},
   setPerson: () => {},
   persons: [],
   person: '',

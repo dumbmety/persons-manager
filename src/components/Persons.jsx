@@ -12,7 +12,7 @@ const Persons = () => {
       {context.persons
         .map(person => (
           <Person
-            changed={event => context.handleNameChange(event, person.id)}
+            changed={event => context.handleEditPerson(event, person.id)}
             deleted={() => context.handleDeletePerson(person.id)}
             fullName={person.fullName}
             key={person.id}
