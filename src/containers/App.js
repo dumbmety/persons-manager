@@ -58,9 +58,16 @@ const App = () => {
       confirmButtonText: 'Edit',
       confirmButtonColor: '#2f855a',
       cancelButtonColor: '#718096'
-    }).then(result => {
-      if (result.isConfirmed) {
-        targetPerson.fullName = result.value;
+    }).then(({ value, isConfirmed }) => {
+      if (isConfirmed) {
+        if (value.trim().length > 30) {
+          return Swal.fire({
+            icon: 'warning',
+            title: 'Warning',
+            text: 'The number of characters allowed is 50 characters.'
+          });
+        }
+        targetPerson.fullName = value;
         setPersons(allPersons);
       }
     });
@@ -68,6 +75,7 @@ const App = () => {
 
   const handleAddPerson = event => {
     event.preventDefault();
+
     if (person.trim() === '') {
       return Swal.fire({
         icon: 'warning',
@@ -76,10 +84,18 @@ const App = () => {
       });
     }
 
+    if (person.trim().length > 30) {
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Warning',
+        text: 'The number of characters allowed is 50 characters.'
+      });
+    }
+
     const allPersons = [...persons];
     const newPerson = { id: allPersons.length + 1, fullName: person };
-
     allPersons.push(newPerson);
+
     setPersons(allPersons);
     setPerson('');
   };

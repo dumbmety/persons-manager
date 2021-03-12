@@ -20,7 +20,7 @@ const AddPerson = () => {
           variant="outline"
           onChange={context.setPerson}
           ref={addPersonInput}
-          placeholder="Add new person ..."
+          placeholder="Add new person..."
         />
         <IconButton
           ml="8px"
