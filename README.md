@@ -13,6 +13,7 @@
 - [x] Confirm pop up when delete task
 - [x] Custom scrollbar like Mac OS
 - [x] Show and Hide persons
+- [x] Handling person name (add, edit)
 - [x] Disable Show/Hide persons button when empty list
 - [x] Show the number of people on the list (and dynamic styling)
 
