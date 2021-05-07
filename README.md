@@ -1,9 +1,7 @@
 ## Preview
-
 ![Person Manager](https://i.ibb.co/6mDHznG/screencapture-persons-manager-herokuapp-2020-12-20-11-55-27.png)
 
 ## Features
-
 - [x] Show persons list
 - [x] Add new person
 - [x] Delete person
@@ -18,13 +16,11 @@
 - [x] Show the number of people on the list (and dynamic styling)
 
 ## Tools
-
 - UI Framework: [Chakra UI](https://chakra-ui.com)
 - Modal: [SweetAlert2](https://sweetalert2.github.io)
 - MacOS Scrollbar: [SimplebarReact](https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-react), [SmoothScrollbar](https://idiotwu.github.io/smooth-scrollbar)
 
 ## Follow Me
-
 - Twitter: [@neysidev](https://twitter.com/neysidev)
 - Instagram: [@neysidev](https://instagram.com/neysidev)
 - LinkedIn: [@neysimehdi](https://linkedin.com/in/neysimehdi)

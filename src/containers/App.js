@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react'
 
 import {
   Alert,
@@ -6,33 +6,29 @@ import {
   Button,
   ChakraProvider,
   Container
-} from '@chakra-ui/react';
-import Swal from 'sweetalert2';
-import SimpleBar from 'simplebar-react';
-import Scrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+} from '@chakra-ui/react'
+import Swal from 'sweetalert2'
+import SimpleBar from 'simplebar-react'
 
-import 'simplebar/dist/simplebar.min.css';
-
-import MyContext from '../context/MyContext';
-import AddPerson from '../components/AddPerson';
-import Header from '../components/Header';
-import Persons from '../components/Persons';
+import MyContext from '../context/MyContext'
+import AddPerson from '../components/AddPerson'
+import Header from '../components/Header'
+import Persons from '../components/Persons'
 
 const App = () => {
-  const [persons, setPersons] = useState([]);
-  const [person, setPerson] = useState('');
-  const [showPersons, setShowPersons] = useState(true);
+  const [persons, setPersons] = useState([])
+  const [person, setPerson] = useState('')
+  const [showPersons, setShowPersons] = useState(true)
 
   const handleShowPersons = () => {
-    setShowPersons(!showPersons);
-  };
+    setShowPersons(!showPersons)
+  }
 
   const handleDeletePerson = id => {
-    const allPersons = [...persons];
+    const allPersons = [...persons]
 
-    const personName = allPersons.filter(p => p.id === id)[0].fullName;
-    const filteredPersons = allPersons.filter(p => p.id !== id);
+    const personName = allPersons.filter(p => p.id === id)[0].fullName
+    const filteredPersons = allPersons.filter(p => p.id !== id)
 
     Swal.fire({
       icon: 'error',
@@ -41,14 +37,14 @@ const App = () => {
       showCancelButton: true,
       confirmButtonText: 'Delete',
       confirmButtonColor: '#e41b1b'
-    }).then(result => result.isConfirmed && setPersons(filteredPersons));
-  };
+    }).then(result => result.isConfirmed && setPersons(filteredPersons))
+  }
 
   const handleEditPerson = (event, id) => {
-    const allPersons = [...persons];
+    const allPersons = [...persons]
 
-    const personIndex = allPersons.findIndex(p => p.id === id);
-    const targetPerson = allPersons[personIndex];
+    const personIndex = allPersons.findIndex(p => p.id === id)
+    const targetPerson = allPersons[personIndex]
 
     Swal.fire({
       title: 'Edit Person',
@@ -65,23 +61,23 @@ const App = () => {
             icon: 'warning',
             title: 'Warning',
             text: 'The number of characters allowed is 50 characters.'
-          });
+          })
         }
-        targetPerson.fullName = value;
-        setPersons(allPersons);
+        targetPerson.fullName = value
+        setPersons(allPersons)
       }
-    });
-  };
+    })
+  }
 
   const handleAddPerson = event => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (person.trim() === '') {
       return Swal.fire({
         icon: 'warning',
         title: 'Warning',
         text: 'Please enter a person name.'
-      });
+      })
     }
 
     if (person.trim().length > 30) {
@@ -89,29 +85,20 @@ const App = () => {
         icon: 'warning',
         title: 'Warning',
         text: 'The number of characters allowed is 50 characters.'
-      });
+      })
     }
 
-    const allPersons = [...persons];
-    const newPerson = { id: allPersons.length + 1, fullName: person };
-    allPersons.push(newPerson);
+    const allPersons = [...persons]
+    const newPerson = { id: allPersons.length + 1, fullName: person }
+    allPersons.push(newPerson)
 
-    setPersons(allPersons);
-    setPerson('');
-  };
+    setPersons(allPersons)
+    setPerson('')
+  }
 
   const setPersonName = event => {
-    setPerson(event.target.value);
-  };
-
-  window.onload = () => {
-    Scrollbar.use(OverscrollPlugin);
-    Scrollbar.init(document.querySelector('div[data-simplebar="init"]'), {
-      plugins: {
-        overscroll: true
-      }
-    });
-  };
+    setPerson(event.target.value)
+  }
 
   return (
     <MyContext.Provider
@@ -125,7 +112,12 @@ const App = () => {
         showPersons
       }}
     >
-      <SimpleBar style={{ maxHeight: '100vh', textAlign: 'center' }}>
+      <SimpleBar
+        style={{
+          maxHeight: '100vh',
+          textAlign: 'center'
+        }}
+      >
         <ChakraProvider>
           <Header />
           <Container as="main">
@@ -149,7 +141,7 @@ const App = () => {
         </ChakraProvider>
       </SimpleBar>
     </MyContext.Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
