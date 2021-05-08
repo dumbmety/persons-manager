@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Box, Flex, IconButton, Text, Spacer } from '@chakra-ui/react';
-import { BiTrashAlt, BiEdit } from 'react-icons/bi';
+import { Box, Flex, IconButton, Text, Spacer } from '@chakra-ui/react'
+import { BiTrashAlt, BiEdit } from 'react-icons/bi'
 
 const Person = props => {
   return (
@@ -21,7 +21,7 @@ const Person = props => {
     >
       <Flex alignItems="center">
         <Box>
-          <Text>{props.fullName}</Text>
+          <Text>{props.name}</Text>
         </Box>
         <Spacer />
         <Box>
@@ -41,7 +41,7 @@ const Person = props => {
         </Box>
       </Flex>
     </Box>
-  );
-};
+  )
+}
 
-export default Person;
+export default Person

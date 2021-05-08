@@ -1,29 +1,28 @@
-import React, { useContext, useEffect, useRef } from 'react';
-
-import { IconButton, Input, InputGroup } from '@chakra-ui/react';
-import { BiPlus } from 'react-icons/bi';
-
-import MyContext from '../context/MyContext';
+import { useEffect, useRef } from 'react'
+import { IconButton, Input, InputGroup } from '@chakra-ui/react'
+import { BiPlus } from 'react-icons/bi'
+import { useDataHandler } from '../context'
 
 const AddPerson = () => {
-  const context = useContext(MyContext);
+  const { person, addPerson, changeName } = useDataHandler()
+  const addPersonInput = useRef(null)
 
-  const addPersonInput = useRef(null);
-  useEffect(() => addPersonInput.current.focus(), []);
+  useEffect(() => {
+    addPersonInput.current.focus()
+  }, [])
 
   return (
-    <form onSubmit={context.handleAddPerson}>
+    <form onSubmit={addPerson}>
       <InputGroup size="lg" mt="1.2rem">
         <Input
-          id="add-person"
-          value={context.person}
+          value={person}
           variant="outline"
-          onChange={context.setPerson}
+          onChange={changeName}
           ref={addPersonInput}
           placeholder="Add new person..."
         />
         <IconButton
-          ml="8px"
+          ml={4}
           as="button"
           type="submit"
           colorScheme="green"
@@ -32,7 +31,7 @@ const AddPerson = () => {
         />
       </InputGroup>
     </form>
-  );
-};
+  )
+}
 
-export default AddPerson;
+export default AddPerson

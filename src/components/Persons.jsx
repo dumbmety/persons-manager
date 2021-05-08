@@ -1,26 +1,23 @@
-import React, { useContext } from 'react';
-
-import Person from './Person';
-
-import MyContext from '../context/MyContext';
+import Person from './Person'
+import { useDataHandler } from '../context'
 
 const Persons = () => {
-  const context = useContext(MyContext);
+  const { persons, editPerson, deletePerson } = useDataHandler()
 
   return (
     <ul className="container">
-      {context.persons
+      {persons
         .map(person => (
           <Person
-            changed={event => context.handleEditPerson(event, person.id)}
-            deleted={() => context.handleDeletePerson(person.id)}
-            fullName={person.fullName}
             key={person.id}
+            name={person.name}
+            changed={event => editPerson(event, person.id)}
+            deleted={() => deletePerson(person.id)}
           />
         ))
         .reverse()}
     </ul>
-  );
-};
+  )
+}
 
-export default Persons;
+export default Persons

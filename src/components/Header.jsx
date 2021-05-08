@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
-
-import { Badge, Box, Heading, Text } from '@chakra-ui/react';
-
-import MyContext from '../context/MyContext';
+import { Badge, Box, Heading, Text } from '@chakra-ui/react'
+import { useDataHandler } from '../context'
 
 const Header = () => {
-  const { persons } = useContext(MyContext);
+  const { persons } = useDataHandler()
 
   return (
     <Box
@@ -29,7 +26,7 @@ const Header = () => {
         </Badge>
       </Text>
     </Box>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
