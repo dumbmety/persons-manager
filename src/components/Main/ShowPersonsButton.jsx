@@ -7,9 +7,9 @@ export default function ShowPersonsButton({ open, toggle }) {
   return (
     <Button
       size="md"
-      colorScheme="blue"
       minWidth={140}
       onClick={toggle}
+      colorScheme="blue"
       disabled={persons.length === 0}
     >
       {open ? 'Hide Persons' : 'Show Persons'}

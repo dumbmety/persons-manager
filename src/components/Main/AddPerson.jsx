@@ -13,7 +13,7 @@ export default function AddPerson() {
 
   return (
     <form onSubmit={addPerson}>
-      <InputGroup size="lg" mt="1.2rem">
+      <InputGroup size="lg" mt={5}>
         <Input
           value={person}
           variant="outline"

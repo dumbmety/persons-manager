@@ -5,17 +5,17 @@ export default function Person({ name, changed, deleted }) {
   return (
     <Box
       p={4}
+      my={5}
       as="li"
       w="full"
-      my={5}
       rounded="md"
       textAlign="left"
       borderWidth={1}
-      fontSize="1.2rem"
-      background="#fff"
+      fontSize={20}
       borderStyle="solid"
+      borderColor="gray.200"
       listStyleType="none"
-      borderColor="#d2d6dc"
+      _hover={{ borderColor: 'gray.300' }}
     >
       <Flex alignItems="center">
         <Box>

@@ -6,7 +6,7 @@ export default function EmptyBox() {
 
   return (
     persons.length === 0 && (
-      <Alert mt="1.2rem" rounded="md" status="warning">
+      <Alert mt={5} rounded="md" status="warning">
         <AlertIcon />
         There is no name, you can add one above.
       </Alert>

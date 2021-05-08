@@ -7,8 +7,5 @@ export const theme = extendTheme({
         fontFamily: 'Manrope'
       }
     }
-  },
-  colors: {
-    light: '#f9fafb'
   }
 })

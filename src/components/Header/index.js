@@ -6,7 +6,15 @@ export default function Header() {
   const { length } = persons
 
   return (
-    <VStack as="header" py={12} mb={5} bg="light" shadow="base">
+    <VStack
+      as="header"
+      py={12}
+      mb={10}
+      bg="gray.50"
+      borderWidth={1}
+      borderStyle="solid"
+      borderColor="gray.100"
+    >
       <Heading fontSize={48} fontWeight={600}>
         Person Manager
       </Heading>
