@@ -8,6 +8,7 @@ export default function ShowPersonsButton() {
     <Button
       size="md"
       colorScheme="blue"
+      minWidth={140}
       onClick={togglePersons}
       disabled={persons.length === 0}
     >
