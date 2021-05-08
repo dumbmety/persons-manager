@@ -9,7 +9,7 @@ export const initialData = {
 
 export const Context = createContext(initialData)
 
-export function Provider({ children }) {
+export default function Provider({ children }) {
   const [data, setData] = useState(initialData)
 
   function addPerson(event) {
