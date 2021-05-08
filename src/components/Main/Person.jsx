@@ -1,18 +1,16 @@
-import React from 'react'
-
 import { Box, Flex, IconButton, Text, Spacer } from '@chakra-ui/react'
 import { BiTrashAlt, BiEdit } from 'react-icons/bi'
 
-const Person = ({ name, changed, deleted }) => {
+export default function Person({ name, changed, deleted }) {
   return (
     <Box
       p={4}
       as="li"
-      w="100%"
-      my="20px"
+      w="full"
+      my={5}
       rounded="md"
       textAlign="left"
-      borderWidth="1px"
+      borderWidth={1}
       fontSize="1.2rem"
       background="#fff"
       borderStyle="solid"
@@ -43,5 +41,3 @@ const Person = ({ name, changed, deleted }) => {
     </Box>
   )
 }
-
-export default Person

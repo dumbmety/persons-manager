@@ -1,5 +1,5 @@
 import { Alert, AlertIcon } from '@chakra-ui/react'
-import { useDataHandler } from '../context'
+import { useDataHandler } from '../../context'
 
 export default function EmptyBox() {
   const { persons } = useDataHandler()

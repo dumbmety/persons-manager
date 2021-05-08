@@ -1,7 +1,7 @@
 import Person from './Person'
-import { useDataHandler } from '../context'
+import { useDataHandler } from '../../context'
 
-const Persons = () => {
+export default function Persons() {
   const { persons, editPerson, deletePerson } = useDataHandler()
 
   return (
@@ -19,5 +19,3 @@ const Persons = () => {
     </ul>
   )
 }
-
-export default Persons

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { IconButton, Input, InputGroup } from '@chakra-ui/react'
 import { BiPlus } from 'react-icons/bi'
-import { useDataHandler } from '../context'
+import { IconButton, Input, InputGroup } from '@chakra-ui/react'
+import { useDataHandler } from '../../context'
 
-const AddPerson = () => {
+export default function AddPerson() {
   const { person, addPerson, changeName } = useDataHandler()
   const addPersonInput = useRef(null)
 
@@ -22,7 +22,7 @@ const AddPerson = () => {
           placeholder="Add new person..."
         />
         <IconButton
-          ml={4}
+          ml={2}
           as="button"
           type="submit"
           colorScheme="green"
@@ -33,5 +33,3 @@ const AddPerson = () => {
     </form>
   )
 }
-
-export default AddPerson

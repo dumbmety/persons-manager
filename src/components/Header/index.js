@@ -1,5 +1,5 @@
 import { Badge, Box, Heading, Text } from '@chakra-ui/react'
-import { useDataHandler } from '../context'
+import { useDataHandler } from '../../context'
 
 const Header = () => {
   const { persons } = useDataHandler()
