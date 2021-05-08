@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Flex, IconButton, Text, Spacer } from '@chakra-ui/react'
 import { BiTrashAlt, BiEdit } from 'react-icons/bi'
 
-const Person = props => {
+const Person = ({ name, changed, deleted }) => {
   return (
     <Box
       p={4}
@@ -21,20 +21,20 @@ const Person = props => {
     >
       <Flex alignItems="center">
         <Box>
-          <Text>{props.name}</Text>
+          <Text>{name}</Text>
         </Box>
         <Spacer />
         <Box>
           <IconButton
             colorScheme="pink"
-            onClick={props.changed}
+            onClick={changed}
             aria-label="Edit Person"
             icon={<BiEdit size="1.2rem" />}
           />
           <IconButton
             ml="8px"
             colorScheme="red"
-            onClick={props.deleted}
+            onClick={deleted}
             aria-label="Delete Person"
             icon={<BiTrashAlt size="1.2rem" />}
           />

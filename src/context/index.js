@@ -9,10 +9,10 @@ export const initialData = {
 
 export const Context = createContext(initialData)
 
-export const Provider = ({ children }) => {
+export function Provider({ children }) {
   const [data, setData] = useState(initialData)
 
-  const addPerson = event => {
+  function addPerson(event) {
     event.preventDefault()
     const { person, persons } = { ...data }
 
@@ -32,51 +32,55 @@ export const Provider = ({ children }) => {
     )
   }
 
-  const deletePerson = id => {
-    // const allPersons = [...persons]
-    // const personName = allPersons.filter(p => p.id === id)[0].fullName
-    // const filteredPersons = allPersons.filter(p => p.id !== id)
-    // Swal.fire({
-    //   icon: 'error',
-    //   title: 'Delete Person',
-    //   text: `Are you sure you want to delete "${personName}"?`,
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Delete',
-    //   confirmButtonColor: '#e41b1b'
-    // }).then(result => result.isConfirmed && setPersons(filteredPersons))
+  function deletePerson(id) {
+    const allPersons = [...data.persons]
+    const personIndex = allPersons.findIndex(p => p.id === id)
+    const personName = allPersons[personIndex].name
+
+    allPersons.splice(personIndex, 1)
+    const result = window.confirm(
+      `Are you sure you want to delete "${personName}"?`
+    )
+
+    if (result) {
+      setData(
+        update(data, {
+          persons: { $set: allPersons }
+        })
+      )
+    }
   }
 
-  const editPerson = (event, id) => {
-    // const allPersons = [...persons]
-    // const personIndex = allPersons.findIndex(p => p.id === id)
-    // const targetPerson = allPersons[personIndex]
-    // Swal.fire({
-    //   title: 'Edit Person',
-    //   input: 'text',
-    //   inputValue: targetPerson.fullName,
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Edit',
-    //   confirmButtonColor: '#2f855a',
-    //   cancelButtonColor: '#718096'
-    // }).then(({ value, isConfirmed }) => {
-    //   if (isConfirmed) {
-    //     if (value.trim().length > 30) {
-    //       return Swal.fire({
-    //         icon: 'warning',
-    //         title: 'Warning',
-    //         text: 'The number of characters allowed is 50 characters.'
-    //       })
-    //     }
-    //     targetPerson.fullName = value
-    //     setPersons(allPersons)
-    //   }
-    // })
+  function editPerson(id) {
+    const allPersons = [...data.persons]
+    const personIndex = allPersons.findIndex(p => p.id === id)
+    const targetPerson = allPersons[personIndex]
+
+    const name = window.prompt('Edit Person', targetPerson.name)
+    if (name.trim().length > 30) {
+      return alert('The number of characters allowed is 50 characters.')
+    }
+
+    targetPerson.name = name.trim()
+    setData(
+      update(data, {
+        persons: { $set: allPersons }
+      })
+    )
   }
 
-  const changeName = ({ target }) => {
+  function changeName({ target }) {
     setData(
       update(data, {
         person: { $set: target.value }
+      })
+    )
+  }
+
+  function togglePersons() {
+    setData(
+      update(data, {
+        showPersons: { $set: !data.showPersons }
       })
     )
   }
@@ -88,7 +92,8 @@ export const Provider = ({ children }) => {
         addPerson,
         deletePerson,
         editPerson,
-        changeName
+        changeName,
+        togglePersons
       }}
     >
       {children}
@@ -96,6 +101,6 @@ export const Provider = ({ children }) => {
   )
 }
 
-export const useDataHandler = () => {
+export function useDataHandler() {
   return useContext(Context)
 }
