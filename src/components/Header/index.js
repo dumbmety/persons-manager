@@ -1,32 +1,21 @@
-import { Badge, Box, Heading, Text } from '@chakra-ui/react'
+import { Badge, Heading, Text, VStack } from '@chakra-ui/react'
 import { useDataHandler } from '../../context'
 
-const Header = () => {
+export default function Header() {
   const { persons } = useDataHandler()
+  const { length } = persons
 
   return (
-    <Box
-      py="3rem"
-      mb="1.2rem"
-      as="header"
-      bg="#f9fafb"
-      borderBottom="1px solid #d2d6dc"
-    >
-      <Heading fontSize="3rem" fontWeight="400" lineHeight="5rem">
+    <VStack as="header" py={12} mb={5} bg="light" shadow="base">
+      <Heading fontSize={48} fontWeight={600}>
         Person Manager
       </Heading>
-      <Text fontSize="1.2rem">
+      <Text fontSize={20}>
         The number of persons is:
-        <Badge
-          colorScheme={persons.length === 0 ? 'red' : 'teal'}
-          fontSize="1rem"
-          ml="0.5rem"
-        >
-          {persons.length}
+        <Badge ml={1} fontSize={16} colorScheme={length === 0 ? 'red' : 'teal'}>
+          {length}
         </Badge>
       </Text>
-    </Box>
+    </VStack>
   )
 }
-
-export default Header
